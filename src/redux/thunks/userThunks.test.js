@@ -10,9 +10,9 @@ describe("Given a userRegisterThunk inner function", () => {
         password: "Admin123",
       };
 
-      const deleteThunk = userRegisterThunk(user);
+      const registerThunk = userRegisterThunk(user);
 
-      await deleteThunk(dispatch);
+      await registerThunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });
