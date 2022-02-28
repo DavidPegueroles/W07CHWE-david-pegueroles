@@ -62,10 +62,8 @@ describe("Given a Register component", () => {
 
       expect(submitButton).not.toBeDisabled();
     });
-  });
 
-  describe("When the user has already introduced a value in the three fields and the user clicks the submit button", () => {
-    test("Then the submit button should be clicked", () => {
+    test("Then the user could click the submit button", () => {
       const nameType = "Luis";
       const usernameType = "luis";
       const passwordType = "Admin123";
