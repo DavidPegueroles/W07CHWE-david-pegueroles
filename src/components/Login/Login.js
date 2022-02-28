@@ -1,10 +1,61 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { userRegisterThunk } from "../../redux/thunks/userThunks";
+import styled from "styled-components";
 
-const RegisterPage = () => {
+const H2 = styled.h2`
+  text-align: center;
+  margin: 30px;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-left: 10vw;
+  margin-bottom: 50px;
+
+  label {
+    font-size: 20px;
+  }
+
+  input {
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+    font-size: 16px;
+    height: 25px;
+    padding: 0 10px;
+
+    color: #265778;
+    border-radius: 5px;
+
+    &:focus {
+      outline: 1px solid #2598e6;
+      border-radius: 5px;
+    }
+  }
+
+  button {
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    background-color: black;
+    color: white;
+
+    transition: 0.5s ease;
+
+    &:disabled {
+      background-color: transparent;
+      color: transparent;
+      border: none;
+    }
+  }
+`;
+
+const Login = () => {
   const blankForm = {
-    name: "",
     username: "",
     password: "",
   };
@@ -24,39 +75,26 @@ const RegisterPage = () => {
     });
   };
 
-  const isFormInvalid =
-    formData.name === "" ||
-    formData.username === "" ||
-    formData.password === "";
+  const isFormInvalid = formData.username === "" || formData.password === "";
 
   const submitForm = async (event) => {
     event.preventDefault();
 
-    const newUser = {
-      name: formData.name,
+    const userCredentials = {
       username: formData.username,
       password: formData.password,
     };
 
-    await dispatch(userRegisterThunk(newUser));
+    await dispatch(userCredentials);
 
     resetForm();
   };
 
   return (
     <>
-      <h2>Create account</h2>
+      <H2>Insert your username and password</H2>
 
-      <form noValidate autoComplete="off" onSubmit={submitForm}>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          placeholder="Super Mario"
-          value={formData.name}
-          onChange={changeData}
-        />
-
+      <Form noValidate autoComplete="off" onSubmit={submitForm}>
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -76,11 +114,11 @@ const RegisterPage = () => {
         />
 
         <button type="submit" disabled={isFormInvalid}>
-          Register
+          Login
         </button>
-      </form>
+      </Form>
     </>
   );
 };
 
-export default RegisterPage;
+export default Login;
