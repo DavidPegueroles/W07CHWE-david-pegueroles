@@ -1,11 +1,26 @@
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import { Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import Navigation from "./components/Navigation/Navigation";
+import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+
+const H1 = styled.h1`
+  margin: 30px;
+`;
 
 function App() {
   return (
     <>
-      <h1>Site in progress, will be available soon...</h1>
+      <H1>Fav Icons</H1>
 
-      <RegisterPage />
+      <Navigation />
+
+      <Routes>
+        <Route path="/" element={<NotFoundPage />} />
+        <Route path="/users/register" element={<AuthenticationPage />} />
+        <Route path="/users/login" element={<AuthenticationPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </>
   );
 }
