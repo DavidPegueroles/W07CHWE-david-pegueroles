@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router-dom";
 import renderWithProviders from "../../setupTests";
 import Register from "./Register";
 
@@ -16,8 +17,11 @@ describe("Given a Register component", () => {
       const usernameType = "luis";
       const passwordType = "Admin123";
 
-      renderWithProviders(<Register />);
-
+      renderWithProviders(
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      );
       const name = screen.getByPlaceholderText(/super mario/i);
       const username = screen.getByPlaceholderText(/supermario/i);
       const password = screen.getByPlaceholderText(/password.../i);
@@ -34,8 +38,11 @@ describe("Given a Register component", () => {
 
   describe("When the user has not yet introduced a value in the three fields", () => {
     test("Then the submit button should be disabled", () => {
-      renderWithProviders(<Register />);
-
+      renderWithProviders(
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      );
       const submitButton = screen.getByRole("button", { name: /register/i });
 
       expect(submitButton).toBeDisabled();
@@ -48,8 +55,11 @@ describe("Given a Register component", () => {
       const usernameType = "luis";
       const passwordType = "Admin123";
 
-      renderWithProviders(<Register />);
-
+      renderWithProviders(
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      );
       const name = screen.getByPlaceholderText(/super mario/i);
       const username = screen.getByPlaceholderText(/supermario/i);
       const password = screen.getByPlaceholderText(/password.../i);
@@ -68,7 +78,11 @@ describe("Given a Register component", () => {
       const usernameType = "luis";
       const passwordType = "Admin123";
 
-      renderWithProviders(<Register />);
+      renderWithProviders(
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      );
 
       const name = screen.getByPlaceholderText(/super mario/i);
       const username = screen.getByPlaceholderText(/supermario/i);
