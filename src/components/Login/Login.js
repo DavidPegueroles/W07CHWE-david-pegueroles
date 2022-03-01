@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { userLoginThunk } from "../../redux/thunks/userThunks";
 
 const H2 = styled.h2`
   text-align: center;
@@ -61,6 +63,7 @@ const Login = () => {
   };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState(blankForm);
 
@@ -85,9 +88,11 @@ const Login = () => {
       password: formData.password,
     };
 
-    await dispatch(userCredentials);
+    await dispatch(userLoginThunk(userCredentials));
 
     resetForm();
+
+    navigate("/");
   };
 
   return (
