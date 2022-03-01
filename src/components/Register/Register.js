@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
 
@@ -63,6 +64,7 @@ const Register = () => {
   };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState(blankForm);
 
@@ -94,6 +96,8 @@ const Register = () => {
     await dispatch(userRegisterThunk(newUser));
 
     resetForm();
+
+    navigate("/users/login");
   };
 
   return (

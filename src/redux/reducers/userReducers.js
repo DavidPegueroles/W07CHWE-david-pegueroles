@@ -7,6 +7,9 @@ const userReducers = (user = {}, action = {}) => {
     case actionsTypes.userRegister:
       newUser = { ...action.user };
       break;
+    case actionsTypes.userLogin:
+      newUser = { ...action.user };
+      break;
     default:
       newUser = { ...user };
   }

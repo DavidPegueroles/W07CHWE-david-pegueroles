@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router-dom";
 import renderWithProviders from "../../setupTests";
 import Login from "./Login";
 
@@ -15,8 +16,11 @@ describe("Given a Login component", () => {
       const usernameType = "luis";
       const passwordType = "Admin123";
 
-      renderWithProviders(<Login />);
-
+      renderWithProviders(
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
+      );
       const username = screen.getByPlaceholderText(/supermario/i);
       const password = screen.getByPlaceholderText(/password.../i);
 
@@ -30,8 +34,11 @@ describe("Given a Login component", () => {
 
   describe("When the user has not yet introduced a value in both fields", () => {
     test("Then the submit button should be disabled", () => {
-      renderWithProviders(<Login />);
-
+      renderWithProviders(
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
+      );
       const submitButton = screen.getByRole("button", { name: /login/i });
 
       expect(submitButton).toBeDisabled();
@@ -43,8 +50,11 @@ describe("Given a Login component", () => {
       const usernameType = "luis";
       const passwordType = "Admin123";
 
-      renderWithProviders(<Login />);
-
+      renderWithProviders(
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
+      );
       const username = screen.getByPlaceholderText(/supermario/i);
       const password = screen.getByPlaceholderText(/password.../i);
 
@@ -60,7 +70,11 @@ describe("Given a Login component", () => {
       const usernameType = "luis";
       const passwordType = "Admin123";
 
-      renderWithProviders(<Login />);
+      renderWithProviders(
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
+      );
 
       const username = screen.getByPlaceholderText(/supermario/i);
       const password = screen.getByPlaceholderText(/password.../i);
