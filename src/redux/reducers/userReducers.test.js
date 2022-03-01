@@ -23,7 +23,7 @@ describe("Given a userReducers function", () => {
     });
   });
 
-  describe("When it receives currentUser and userLogin action with a valid user", () => {
+  describe("When it receives currentUser and userLogin action with a valid user credentials", () => {
     test("Then it should return the user", () => {
       const currentUser = {};
 
